@@ -55,7 +55,9 @@ class TaskController extends Controller
      */
     public function show($id)
     {
-        //
+        $task = Task::find($id);
+
+        return view('show', ['task' => $task]);
     }
 
     /**
@@ -66,7 +68,8 @@ class TaskController extends Controller
      */
     public function edit($id)
     {
-        //
+        $task = Task::find($id);
+        return view('edit', ['task' => $task]);
     }
 
     /**
@@ -78,7 +81,13 @@ class TaskController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $task = Task::find($id);
+        $task->title = $request->title;
+        $task->description = $request->description;
+
+        $task->save();
+        
+        return redirect("/");
     }
 
     /**
@@ -89,6 +98,9 @@ class TaskController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $task = Task::find($id);
+        $task->delete();
+
+        return redirect('/');
     }
 }

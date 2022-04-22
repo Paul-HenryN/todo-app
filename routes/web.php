@@ -14,10 +14,21 @@ use App\Http\Controllers\TaskController;
 |
 */
 
+Route::get('/', function(){
+    return view('welcome');
+});
+
 Route::get('/', [TaskController::class, 'index']);
 
 Route::get('/add', [TaskController::class, 'create']);
 
 Route::post('/add', [TaskController::class, 'store']);
 
+Route::get('/task/{id}', [TaskController::class, 'show']);
+
+Route::get('/delete/{id}', [TaskController::class, 'destroy']);
+
+Route::get('/edit/{id}', [TaskController::class, 'edit']);
+
+Route::post('/edit/{id}', [TaskController::class, 'update']);
 

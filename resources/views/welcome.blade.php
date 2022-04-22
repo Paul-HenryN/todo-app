@@ -13,15 +13,13 @@
         </header>
 
         <main>
-            <div class="todo-list">
+            <div class="todo-list container">
                 @foreach($tasks as $task)
+                <a href="/task/{{$task->id}}">
                     <div class="card">
                         <h2>&plus; {{$task->title}}</h2>
-
-                        <p>
-                            {{$task->description}}
-                        </p>
                     </div>
+                </a>
                 @endforeach
             </div>
 
